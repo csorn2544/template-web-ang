@@ -1,0 +1,113 @@
+.page-header-text {
+  font-family: NotoSansThai;
+  color: var(--basic-black);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0.2px;
+}
+
+.body-text {
+  font-family: NotoSansThai;
+  color: var(--basic-black);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0.1px;
+}
+
+/* subtitle-1 */
+.subtitle-medium-text {
+  font-family: NotoSansThai;
+  color: var(--basic-black);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+}
+
+/* subtitle-2 */
+.subtitle-small-text {
+  font-family: NotoSansThai;
+  color: var(--basic-black);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+}
+
+.small-text {
+  font-family: NotoSansThai;
+  color: var(--basic-black);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+}
+
+.header2-text {
+  font-family: NotoSansThai;
+  color: var(--basic-black);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0.2px;
+}
+
+.header3-text {
+  font-family: NotoSansThai;
+  color: var(--basic-black);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0.2px;
+}
+.header3-regular-text {
+  font-family: NotoSansThai;
+  color: var(--basic-black);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0.2px;
+}
+
+.header4-text {
+  font-family: NotoSansThai;
+  color: var(--basic-black);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+}
+
+.header4-regular-text {
+  font-family: NotoSansThai;
+  color: var(--basic-black);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+}
+
+.small-text-label {
+  font-family: NotoSansThai;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+}
+
+mat-label {
+  font-family: NotoSansThai;
+}

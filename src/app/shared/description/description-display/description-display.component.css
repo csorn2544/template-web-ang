@@ -1,0 +1,25 @@
+.description-container {
+  width: 100px;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;  
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; 
+}
+
+ 
+
+.show-more-button {
+  background-color: var(--blue-blue-main);
+  color: #fff;
+  border: none;
+  margin-top: 5px;
+  padding: 4px 8px; 
+  cursor: pointer;
+  font-size: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease-in-out;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,183 @@
+.wrapper {
+    display: flex;
+    align-items: left;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: #e9ecef;
+  }
+  
+  #content {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  #page {
+    min-width: 100%;
+    min-height: 100%;
+    background-color: #f8f8f8;
+    padding: 0.3cm;
+    border-radius: 0.12cm;
+    overflow: auto;
+  }
+  
+  .page-margin {
+    margin: 0.3cm;
+  }
+  
+  .wrapper.active #sidebar {
+    transform: translateX();
+  }
+  
+  .wrapper.active #content {
+    width: calc(100% - 220px);
+  }
+  
+  #sidebar.active {
+    margin-left: -220px;
+  }
+  
+  #sidebar-wrap {
+    position: fixed;
+    min-width: 220px;
+    max-width: 220px;
+    min-height: 100vh;
+    background: var(--basic-darkblue);
+    z-index: 1000;
+  }
+  
+  #sidebar {
+    min-width: 220px;
+    max-width: 220px;
+    min-height: 100vh;
+  }
+  
+  #logo-ata {
+    padding: 0px 12px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .divider {
+    width: 100%;
+    height: 0.5px;
+    background-color: #14329c;
+  }
+  
+  a[data-toggle="collapse"] {
+    position: relative;
+  }
+  
+  .dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+  }
+  
+  @media (max-width: 767px) {
+    #sidebar {
+      margin-left: -220px;
+    }
+  
+    #sidebar.active {
+      margin-left: 0;
+    }
+  }
+  
+  a,
+  a:hover,
+  a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  
+  #sidebar {
+    background: var(--basic-darkblue);
+    color: var(--basic-white);
+    transition: all 0.3s;
+  }
+  
+  #sidebar ul li a {
+    background: var(--basic-darkblue);
+    padding: 10px;
+    font-size: 0.95em;
+    display: block;
+  }
+  
+  /* Menu hover */
+  #sidebar ul li a:hover {
+    color: #f8f9fa;
+    background: var(--blue-blue-main);
+  }
+  
+  /* Menu expand hilight */
+  #sidebar ul li.active>a,
+  a[aria-expanded="true"] {
+    color: #f8f9fa;
+    background: var(--blue-blue-main);
+  }
+  
+  /* Sub Menu */
+  ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  #sidebar a {
+    margin: 0% 10px;
+    border-radius: 4px;
+  }
+  
+  /* Menu active */
+  #sidebar a.menu-active {
+    background-color: var(--blue-blue-main) !important;
+  }
+  
+  #sidebar a.nav-link.active {
+    background-color: var(--blue-blue-main) !important;
+  }
+  
+  /* Header of Group Menu active */
+  #sidebar a.group-active {
+    background-color: var(--second-darkblue) !important;
+  }
+  
+  span.fontawesome-icon {
+    margin-right: 12px;
+  }
+  
+  .nav-link {
+    display: flex;
+  }
+  
+  .nav-link.active {
+    background-color: var(--blue-blue-main);
+    color: #fff;
+  }
+  
+  mat-drawer-content {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .menu-spacer {
+    flex: 1 1 auto;
+  }
+  
+  ::ng-deep .cdk-overlay-container {
+    z-index: 1020 !important;
+  }
+  
+  .logo-portal {
+    text-align: center;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }

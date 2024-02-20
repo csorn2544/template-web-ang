@@ -1,0 +1,35 @@
+<div class="row justify-content-start">
+  <div class="col-12 padding-0">
+    <div class="wrapper">
+      <div id="sidebar">
+        <nav id="sidebar-wrap">
+          <ul class="list-unstyled components">
+            <li>
+              <a href="#sidebar-pdpa-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+                [ngClass]="{ 'group-active': ['pdpa-consent', 'pdpa-privacy-policy'].includes(this.currentPath) }">
+                <span class="fontawesome-icon" style="vertical-align: middle">
+                  <i class="fa-solid fa-lock" style="color: #ffffff; font-size: smaller;"></i>
+                </span>PDPA
+              </a>
+              <ul class="collapse list-unstyled" id="sidebar-pdpa-submenu"
+              [ngClass]="{ show: ['pdpa-consent', 'pdpa-privacy-policy'].includes(this.currentPath) }">
+              <li>
+                <a class="nav-link" routerLink="pdpa-consent" routerLinkActive="active">
+                  PDPA Consent
+                </a>
+              </li>
+            </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="content" id="content">
+        <div class="page" id="page">
+          <div class="page-margin" id="page-margin">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

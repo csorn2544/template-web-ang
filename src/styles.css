@@ -1,1 +1,297 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "NotoSansThai", sans-serif !important;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+td {
+  font-family: "NotoSansThai", sans-serif;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  background-position: top center;
+  font-family: NotoSansThai;
+  background-color: white;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+/* MARK: padding */
+.padding-0 {
+  padding: 0px;
+}
+
+.padding-left-8 {
+  padding-left: 8px;
+}
+
+.padding-left-16 {
+  padding-left: 16px;
+}
+
+/* MARK: Magin */
+.margin-32 {
+  margin: 32px;
+}
+
+.margin-left-8 {
+  margin-left: 8px;
+}
+
+.margin-left-16 {
+  margin-left: 16px;
+}
+
+.margin-top-8 {
+  margin-top: 8px;
+}
+
+.margin-top-16 {
+  margin-top: 16px;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.margin-top-24 {
+  margin-top: 24px;
+}
+
+.margin-top-32 {
+  margin-top: 32px;
+}
+
+.margin-right-8 {
+  margin-right: 8px;
+}
+
+.margin-right-16 {
+  margin-right: 16px;
+}
+
+.margin-right-32 {
+  margin-right: 32px;
+}
+
+.margin-bottom-16 {
+  margin-bottom: 16px;
+}
+
+/* MARK: Text alginment */
+.text-align-center-important {
+  text-align: center !important;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.icon-button {
+  border: none;
+  background: transparent;
+  font-size: 1.5em;
+  color: #333;
+  cursor: pointer;
+}
+
+.mat-secondary {
+  background-color: white;
+  color: grey;
+}
+
+/* snackbar */
+.snackbar-success {
+  background: rgb(75, 181, 67);
+  color: white;
+}
+
+.snackbar-success button {
+  background-color: rgb(75, 181, 67);
+  color: white;
+  border: none;
+}
+
+.snackbar-warning {
+  background: rgb(255, 167, 25);
+  color: white;
+}
+
+.snackbar-warning button {
+  background-color: rgb(255, 167, 25);
+  color: white;
+  border: none;
+}
+
+.snackbar-error {
+  background: rgb(226, 31, 31);
+  color: white;
+}
+
+.snackbar-error button {
+  background-color: rgb(226, 31, 31);
+  color: white;
+  border: none;
+}
+
+/* MARK: Button */
+.button-primary {
+  color: #ffffff !important;
+  border-color: var(--blue-blue-main) !important;
+  background-color: var(--blue-blue-main) !important;
+  min-width: unset!important;
+}
+
+.button-primary-light {
+  color: var(--blue-blue-main) !important;
+  border-color: var(--blue-blue-main) !important;
+}
+
+.button-secondary-light {
+  color: var(--basic-red);
+}
+
+.button-delete {
+  color: #ffffff !important;
+  border-color: var(--basic-red) !important;
+  background-color: var(--basic-red) !important;
+}
+
+.button-cancel {
+  color: black !important;
+  border-color: rgb(199, 199, 199) !important;
+}
+
+.navigate-back-button {
+  margin-bottom: 8px !important;
+}
+
+.page-content {
+  margin-top: 16px;
+  padding: 24px;
+  gap: 24px;
+  border-radius: 4px;
+  border: 1px solid var(--stroke, #E8EFF5);
+  background: #FFF;
+}
+
+/* MARK: Tag */
+.status-tag {
+  justify-content: center;
+  align-items: center;
+  width: 88px;
+  padding: 4px 12px;
+  border-radius: 4px;
+}
+
+.draft-tag {
+  color: var(--text-gray);
+  background-color: #f2f2f2;
+}
+
+.submitted-tag {
+  color: var(--basic-orange);
+  background-color: #ffe6bb;
+}
+
+.approved-tag {
+  color: var(--basic-green);
+  background-color: #edf7e8;
+}
+
+.rejected-tag {
+  color: var(--basic-red);
+  background-color: #fee5e5;
+}
+
+.active-tag {
+  color: var(--basic-green);
+  background-color: #edf7e8;
+}
+
+.inactive-tag {
+  color: var(--text-gray);
+  background-color: #fbfbfb;
+}
+
+/* MARK: Input */
+.input-text {
+  height: 40px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  outline: none;
+  background-color: #ffffff;
+}
+
+.input-text:disabled {
+  border-color: #ced4da;
+  background-color: #f8f9fa;
+  color: #6c757ddd;
+  cursor: not-allowed;
+}
+
+/* MARK: Dropdown */
+.custom-dropdown .mat-form-field-outline-start,
+.custom-dropdown .mat-form-field-outline-end {
+  border-color: #ced4da;
+}
+
+.custom-dropdown .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #ced4da;
+}
+
+.custom-dropdown .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  border-width: 2px;
+}
+
+::ng-deep .custom-dropdown .mat-form-field-underline {
+  display: none;
+}
+
+input.mat-input-element {
+  font-family: 'NotoSansThai', sans-serif;
+}
+
+.cdk-global-scrollblock{
+  position: unset!important;
+}
+
+/* Assuming "button-primary" is used for primary buttons */
+.button-primary:focus, 
+.button-primary:active {
+  outline: none !important;
+}
+
+.show-more-button:focus,
+.show-more-button:active {
+  outline: none !important;
+}
+
+.close-button:focus,
+.close-button:active {
+  outline: none !important;
+}
+
+

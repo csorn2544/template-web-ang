@@ -1,0 +1,26 @@
+<div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+        <mat-icon class="material-icons-outlined" [ngStyle]="{ 
+            'color': iconColor, 
+            'padding-left': iconPaddingLeft, 
+            'font-size': iconSize,
+            'width': '90px',
+            'height': '90px' }">{{ icon }}</mat-icon>
+    </div>
+</div>
+<div class="row justify-content-center margin-top-8">
+    <div class="header2-text">{{ title }}</div>
+</div>
+<div class="row justify-content-center margin-top-32 justify-content">
+    <div class="small-text-label">{{ description }}</div>
+</div>
+<div class="row justify-content-center margin-top-32">
+    <div class="col-6" style="padding-right: 8px;">
+        <button mat-stroked-button class="width-100" ngClass="" style="height: 44px;"
+            (click)="onCancelButtonClick()">{{ secondaryButtoonTitle }}</button>
+    </div>
+    <div class="col-6" style="padding-left: 8px;">
+        <button mat-stroked-button class="button-delete width-100" style="height: 44px;"
+            (click)="onConfirmButtonClick()">{{ primaryButtonTitle }}</button>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="description-container">
+    {{ showFull ? description : (description | slice: 0:maxLength) }}{{ !showFull && description.length > maxLength ? '...' : '' }}
+   
+</div>
+<button
+      type="button"
+      class="show-more-button"
+      (click)="toggleShowFull()"
+    >
+     Show More 
+</button>

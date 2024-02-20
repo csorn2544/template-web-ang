@@ -1,0 +1,78 @@
+/* MARK: Color */
+:root {
+    --basic-black: #000000;
+    --basic-darkblue: #0e1f70;
+    --basic-green: #49aa19;
+    --basic-red: #d32029;
+    --basic-white: #ffffff;
+    --basic-yellow: #eeab00;
+    --basic-orange: rgb(247, 152, 20);
+    --blue-bg: #eff2fd;
+    --blue-blue-main: #0032c8;
+    --font: #8e99a6;
+    --gray2: #1d1d1d;
+    --gray7: #8c8c8c;
+    --gray9: #262626;
+    --gray-disable: #bfbfbf;
+    --m3Sys-light-on-surface: #1c1b1f;
+    --second-darkblue: #0b2587;
+    --stroke: #e8eff5;
+    --text-gray: #acacac;
+    --status-not-complete: #e6e6e6;
+    --status-room-finished: #ab6435;
+    --status-cm-defect: #ffb7b7;
+    --status-pmc-check: #d81aa3;
+    --status-pmc-defect: #612e86;
+    --status-customer-check: #1c84ff;
+    --status-customer-check-unsold: #1c84ff;
+    --status-customer-defect: #ea3323;
+    --status-bu-defect: #747171;
+    --status-correction-complete: #45c705;
+    --status-customer-accepted: #ffff73;
+    --snackbar-success: #dfffcc;
+    --snackbar-failed: #ffbcc0;
+}
+
+.blue-blue-main-color {
+    color: var(--blue-blue-main) !important;
+}
+
+.basic-dark-blue {
+    color: var(--basic-darkblue) !important;
+}
+
+.basic-black-color {
+    color: var(--basic-black) !important;
+}
+
+.basic-red-color {
+    color: var(--basic-red) !important;
+}
+
+.basic-white-color {
+    color: var(--basic-white) !important;
+}
+
+.basic-red-background {
+    background-color: var(--basic-red) !important;
+}
+
+.basic-blue-background {
+    background-color: var(--blue-blue-main) !important;
+}
+
+.stroke-border {
+    border: 1px solid var(--stroke) !important;
+}
+
+.basic-red-border {
+    border: 1px solid var(--basic-red) !important;
+}
+
+.basic-font-color {
+    color: var(--font) !important;
+}
+
+.gray-9-color {
+    color: var(--gray9) !important;
+}
