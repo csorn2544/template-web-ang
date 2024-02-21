@@ -36,6 +36,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DescriptionDialogComponent } from './shared/description/description-dialog/description-dialog.component'; 
 import { DescriptionDisplayComponent } from './shared/description/description-display/description-display.component'; 
 import { ConfirmDiallogComponent } from './shared/confirm-diallog/confirm-diallog.component';
+import { PdpaPrivacyComponent } from './pdpa-privacy/pdpa-privacy.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ConfirmDiallogComponent } from './shared/confirm-diallog/confirm-diallo
     ConfirmDiallogComponent,
     MainComponent,
     PdpaConsentComponent,
+    PdpaPrivacyComponent,
   ],
   imports: [
     BrowserModule,
