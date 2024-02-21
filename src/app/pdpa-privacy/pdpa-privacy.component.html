@@ -16,17 +16,17 @@
         <div class="col-12">
           <table mat-table [dataSource]="dataSource">
             <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-align-center-important" style="width: 250px; padding-right: 25px;">ID.</th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold text-align-center-important" style="width: 250px; font-size: 11px; padding-right: 10px;">ID.</th>
               <td mat-cell *matCellDef="let row" class="text-align-center-important" style="width: 5%; padding-right: 25px;">{{ row.id }}</td>
             </ng-container>
             <ng-container matColumnDef="ppCode">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-align-center-important" style="width: 250px; font-size: 13px; padding-right: 20px;">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold text-align-center-important" style="width: 250px; font-size: 11px; padding-right: 10px;">
                 Name</th>
-                <td mat-cell *matCellDef="let row" class="text-align-center-important" style="width: 5%; padding-right: 15px;">{{ row.ppCode }}</td>
+                <td mat-cell *matCellDef="let row" class="text-align-center-important" style="width: 5%; padding-right: 10px;">{{ row.ppCode }}</td>
             </ng-container>
             <ng-container matColumnDef="status">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-align-center-important"
-                style="width: 250px; font-size: 13px; padding-right: 10px;">Status</th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold text-align-center-important"
+                style="width: 250px; font-size: 11px; padding-right: 10px;">Status</th>
               <td mat-cell *matCellDef="let row" class="text-align-center-important">
                 <div style="display: flex; justify-content: center; align-items: center;">
                   <div class="status-tag" [ngClass]="{
@@ -39,30 +39,30 @@
               </td>
             </ng-container>
             <ng-container matColumnDef="version">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-align-center-important" style="width: 250px; font-size: 13px;">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold text-align-center-important" style="width: 250px; font-size: 11px; padding-right: 10px;">
                   Version</th>
               <td mat-cell *matCellDef="let row" class="text-align-center-important">{{ row.version }}</td>
             </ng-container>
             <ng-container matColumnDef="titleTh">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-align-center-important" style="width: 250px; font-size: 13px; padding-left: 5px;">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold text-align-center-important" style="width: 250px; font-size: 11px; padding-right: 10px;">
                   Title(TH)</th>
-              <td mat-cell *matCellDef="let row" class="text-align-center-important" style="padding-left: 15px; font-size: 12px;">{{ row.titleTh }}</td>
+              <td mat-cell *matCellDef="let row" class="text-align-center-important" style="padding-right: 10px; font-size: 12px;">{{ row.titleTh }}</td>
             </ng-container>
             <ng-container matColumnDef="titleEn">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-align-center-important" style="width: 250px; padding-left: 5px; font-size: 13px;">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold text-align-center-important" style="width: 250px; font-size: 11px; padding-right: 10px;">
                   Title(EN)</th>
-              <td mat-cell *matCellDef="let row" class="text-align-center-important" style="padding-left: 15px; font-size: 12px;">{{ row.titleEn }}</td>
+              <td mat-cell *matCellDef="let row" class="text-align-center-important" style="padding-right: 10px; font-size: 12px;">{{ row.titleEn }}</td>
             </ng-container>
             <ng-container matColumnDef="titleZh">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-align-center-important" style="width: 250px; padding-left: 5px; font-size: 13px;">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold text-align-center-important" style="width: 250px; font-size: 11px; padding-right: 10px;">
                   Title(ZH)</th>
-              <td mat-cell *matCellDef="let row" class="text-align-center-important" style="padding-left: 15px; font-size: 12px;">{{ row.titleZh }}</td>
+              <td mat-cell *matCellDef="let row" class="text-align-center-important" style="padding-right: 10px; font-size: 12px;">{{ row.titleZh }}</td>
             </ng-container>
             <ng-container matColumnDef="descriptionTh">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-align-center-important" style="width: 250px; font-size: 13px;">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold text-align-center-important" style="width: 250px; font-size: 11px; padding-right: 10px;">
                 Description(TH) 
               </th>
-              <td mat-cell *matCellDef="let row" style="width: 250px; padding-left: 15px; font-size: 12px;">
+              <td mat-cell *matCellDef="let row" style="width: 250px; padding-right: 10px; font-size: 12px;">
                 <app-description-display
                   [description]="row.descriptionTh"
                   [maxLength]="50"
@@ -71,7 +71,7 @@
               </td>
             </ng-container>
             <ng-container matColumnDef="descriptionEn">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-align-center-important" style="width: 250px; padding-right: 10px; font-size: 13px;">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold text-align-center-important" style="width: 250px; padding-right: 10px; font-size: 11px;">
                   Description(EN)</th>
                   <td mat-cell *matCellDef="let row" style="width: 250px; font-size: 12px; padding-left: 10px;">
                     <app-description-display
@@ -82,7 +82,7 @@
                   </td>
             </ng-container>
             <ng-container matColumnDef="descriptionZh">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-align-center-important" style="width: 250px; padding-right: 10px; font-size: 13px;">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold text-align-center-important" style="width: 250px; padding-right: 10px; font-size: 11px;">
                   Description(ZH)</th>
                   <td mat-cell *matCellDef="let row" style="width: 250px; font-size: 12px; padding-left: 10px;">
                     <app-description-display
@@ -93,14 +93,14 @@
                   </td>
             </ng-container>
             <ng-container matColumnDef="creationTime">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-align-center-important" style="width: 250px; font-size: 13px;">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold text-align-center-important" style="width: 250px; padding-right: 10px; font-size: 11px;">
                   Created Date</th>
               <td mat-cell *matCellDef="let row" class="text-align-center-important" style="font-size: 12px;">
                 {{ row.creationTime | date: 'dd/MM' }}<br>{{ row.creationTime | date: 'yyyy' }}
               </td>
             </ng-container>
             <ng-container matColumnDef="lastModificationTime">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-align-center-important" style="width: 250px; font-size: 13px; padding-left: 10px;">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-weight-bold text-align-center-important" style="width: 250px; padding-right: 10px; font-size: 11px;">
                   Last Modified Time</th>
               <td mat-cell *matCellDef="let row" class="text-align-center-important"  style="padding-left: 15px; font-size: 12px;">
                 {{ row.lastModificationTime | date: 'dd/MM' }}<br>{{ row.lastModificationTime | date: 'yyyy' }}
@@ -108,10 +108,10 @@
             </ng-container>
             <ng-container matColumnDef="action">
               <th mat-header-cell *matHeaderCellDef mat-sort-header
-                  class="text-align-center-important" style="padding-left: 10px; padding-right: 10px;">
+                  class="font-weight-bold text-align-center-important" style="padding-left: 10px; padding-right: 10px; font-size: 11px;">
                   Action
               </th>
-              <td mat-cell *matCellDef="let row" style="width: 100px; padding-right: 10px;">
+              <td mat-cell *matCellDef="let row" style="width: 100px; padding-left: 10px ">
                   <div class="row justify-content-center">
                       <div style="padding-top: 1px;">
                           <a (click)="onEditRowClick(row)"><i class="fa-solid fa-pen-to-square pointer"

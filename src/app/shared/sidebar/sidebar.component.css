@@ -39,16 +39,16 @@
   
   #sidebar-wrap {
     position: fixed;
-    min-width: 220px;
-    max-width: 220px;
+    min-width: 180px; /* Adjust this value to make the sidebar smaller */
+    max-width: 180px; /* Adjust this value to make the sidebar smaller */
     min-height: 100vh;
     background: var(--basic-darkblue);
     z-index: 1000;
   }
   
   #sidebar {
-    min-width: 220px;
-    max-width: 220px;
+    min-width: 180px; /* Adjust this value to make the sidebar smaller */
+    max-width: 180px; /* Adjust this value to make the sidebar smaller */
     min-height: 100vh;
   }
   
