@@ -1,10 +1,11 @@
 .close-button {
   background-color: var(--blue-blue-main);
-  color: #fff;
+  color: #fff !important; 
   border: none;
   padding: 4px 8px;
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.3s ease-in-out;
   margin-bottom: 10px;
+  margin-left: 10px;
 }

@@ -13,14 +13,17 @@ import { FetchPdpaConsentListModel } from '../models/pdpa-consent/fetch-pdpa-con
 import { PdpaConsentModel } from '../models/pdpa-consent/pdpa-consent';
 
 //Service
-import { PdpaConsentService } from '../services/pdpa-consent/pdpa-consent.service'; 
-import { ConfirmDiallogComponent, ConfirmDialogType } from '../shared/confirm-diallog/confirm-diallog.component';
+import { PdpaConsentService } from '../services/pdpa-consent/pdpa-consent.service';
+import {
+  ConfirmDiallogComponent,
+  ConfirmDialogType,
+} from '../shared/confirm-diallog/confirm-diallog.component';
 import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-pdpa-consent',
   templateUrl: './pdpa-consent.component.html',
-  styleUrls: ['./pdpa-consent.component.css']
+  styleUrls: ['./pdpa-consent.component.css'],
 })
 export class PdpaConsentComponent implements OnInit {
   pageTitle: string = 'PDPA Consent Management';
@@ -53,7 +56,7 @@ export class PdpaConsentComponent implements OnInit {
 
   pdpaConsentForm = new FormGroup({
     filterKey: new FormControl({ value: 0, disabled: false }),
-    filterValue: new FormControl({ value: "", disabled: false }),
+    filterValue: new FormControl({ value: '', disabled: false }),
   });
 
   constructor(
@@ -78,7 +81,7 @@ export class PdpaConsentComponent implements OnInit {
       filterType: filterType,
       filterValue: filterValue,
     };
-    console.log(request)
+    console.log(request);
     this.pdpaConsentService.getAllPdpaConsent(request).subscribe({
       next: (response) => {
         this.pdpaConsentList = this.mapModelResponse(response.data);
@@ -92,7 +95,7 @@ export class PdpaConsentComponent implements OnInit {
     const request: FetchFilterSearchRequest = {
       typeGroup: 'pdpa-consent',
     };
-    this.selectedFilterOption = "0";
+    this.selectedFilterOption = '0';
     this.fetchPdpaConsentList(
       this.pageIndex,
       this.pageSize,
@@ -100,7 +103,7 @@ export class PdpaConsentComponent implements OnInit {
       ''
     );
   }
-  
+
   mapModelResponse(itemList: FetchPdpaConsentListModel[]): PdpaConsentModel[] {
     const PdpaConsentDataList: PdpaConsentModel[] = [];
     itemList.forEach((item) => {
@@ -125,30 +128,35 @@ export class PdpaConsentComponent implements OnInit {
     });
     return PdpaConsentDataList;
   }
-
+  
   getPaginatorData(event: PageEvent) {
     this.pageIndex = event.pageIndex;
-      this.pageSize = event.pageSize;
-      this.dataSource = new MatTableDataSource();
-      this.fetchPdpaConsentList(
-        this.pageIndex,
-        this.pageSize,
-        Number(this.selectedFilterOption),
-        this.isModified ? this.modifiedFilterValue : this.pdpaConsentForm.controls.filterValue.value
-      );
-    }
+    this.pageSize = event.pageSize;
+    this.fetchPdpaConsentList(
+      this.pageIndex,
+      this.pageSize,
+      Number(this.selectedFilterOption),
+      this.isModified
+        ? this.modifiedFilterValue
+        : this.pdpaConsentForm.controls.filterValue.value
+    );
+  }
 
   modifyFilterValues(): any {
-    const filterValueControl = this.pdpaConsentForm.get("filterValue");
-    return this.datePipe.transform(filterValueControl.value, 'dd/MM/yyyy') || ''
+    const filterValueControl = this.pdpaConsentForm.get('filterValue');
+    return (
+      this.datePipe.transform(filterValueControl.value, 'dd/MM/yyyy') || ''
+    );
   }
 
   onChangeFilterKey() {
-    const selectingFilterOption = this.filterOptions.find(option => option.typeValue === this.selectedFilterOption);
+    const selectingFilterOption = this.filterOptions.find(
+      (option) => option.typeValue === this.selectedFilterOption
+    );
     this.typeName = selectingFilterOption.typeName;
     this.typeEvent = selectingFilterOption.typeEvent;
-    this.pdpaConsentForm.get('filterValue').setValue("");
-    if (this.typeName === "All") {
+    this.pdpaConsentForm.get('filterValue').setValue('');
+    if (this.typeName === 'All') {
       this.pdpaConsentForm.get('filterValue').clearValidators();
       this.pdpaConsentForm.get('filterValue').disable();
       this.fetchPdpaConsentList(
@@ -159,28 +167,30 @@ export class PdpaConsentComponent implements OnInit {
       );
     } else {
       this.pdpaConsentForm.get('filterValue').enable();
-      this.pdpaConsentForm.get('filterValue').setValidators(Validators.required);
+      this.pdpaConsentForm
+        .get('filterValue')
+        .setValidators(Validators.required);
     }
 
     this.pdpaConsentForm.get('filterValue').updateValueAndValidity();
   }
-
 
   onClickCreateButton() {
     this.router.navigate(['pdpa-consent', 'new']);
   }
 
   onEditRowClick(row: any) {
-    this.router.navigate(['pdpa-consent', row.id , JSON.stringify(row)]);
+    this.router.navigate(['pdpa-consent', row.id, JSON.stringify(row)]);
   }
 
   onDeleteRowClick(row: FetchPdpaConsentListModel) {
     const dialogRef = this.dialog.open(ConfirmDiallogComponent, {
-      width: '400px'
+      width: '400px',
     });
     dialogRef.componentInstance.confirmDialogType = ConfirmDialogType.delete;
-    dialogRef.componentInstance.title = "Delete PDPA-Consent?";
-    dialogRef.componentInstance.description = "You will not be able to recover it.";
+    dialogRef.componentInstance.title = 'Delete PDPA-Consent?';
+    dialogRef.componentInstance.description =
+      'You will not be able to recover it.';
     // dialogRef.afterClosed().subscribe(result => {
     //   if (result == ConfirmDialogResult.primaryButtonClick) {
     //     const request: DeletePdpaConsentRequest = {

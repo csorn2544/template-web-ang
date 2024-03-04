@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { catchError, map, retry } from 'rxjs';
@@ -8,6 +8,7 @@ import { FeatchPdpaPrivacyListResponse } from 'src/app/models/pdpa-privacy/featc
 @Injectable({
   providedIn: 'root'
 })
+
 export class PdpaPrivacyService {
   private baseUrl = 'https://localhost:7095/api/v1';
 

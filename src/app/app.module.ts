@@ -37,6 +37,8 @@ import { DescriptionDialogComponent } from './shared/description/description-dia
 import { DescriptionDisplayComponent } from './shared/description/description-display/description-display.component'; 
 import { ConfirmDiallogComponent } from './shared/confirm-diallog/confirm-diallog.component';
 import { PdpaPrivacyComponent } from './pdpa-privacy/pdpa-privacy.component';
+import { TableModule } from 'primeng/table';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -78,6 +80,8 @@ import { PdpaPrivacyComponent } from './pdpa-privacy/pdpa-privacy.component';
     MatBottomSheetModule,
     MatRadioModule,
     MatMenuModule,
+    TableModule,
+    PaginatorModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

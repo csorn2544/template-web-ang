@@ -26,20 +26,4 @@ export class SidebarComponent {
 
   ngOnInit(): void {
   }
-
-  checkCloseSidebar() {
-    this.isMobile().subscribe(isMobile => {
-      if (isMobile) {
-        $('#sidebar').toggleClass('active');
-      }
-    });
-  }
-
-  private isMobile(): Observable<boolean> {
-    return this.breakpointObserver.observe([Breakpoints.Handset])
-      .pipe(
-        map(result => result.matches)
-      );
-  }
-
 }
