@@ -1,4 +1,4 @@
-export interface FetchPdpaConsentListResponse {
+export interface FetchPdpaPrivacyListResponse {
   itemCount?: number;
   pageNumber?: number;
   pageSize?: number;
@@ -6,12 +6,12 @@ export interface FetchPdpaConsentListResponse {
   status?: string;
   serviceName?: string;
   message?: string;
-  data?: FetchPdpaConsentListModel[];
+  data?: FetchPdpaPrivacyListModel[];
 }
 
-export interface FetchPdpaConsentListModel {
+export interface FetchPdpaPrivacyListModel {
   id?: number;
-  conCode?: string;
+  ppCode?: string;
   status?: number;
   version?: string;
   titleTh?: string;

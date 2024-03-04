@@ -7,9 +7,9 @@ import { DatePipe } from '@angular/common';
 import { FetchFilterSearchModel } from '../models/common/fetch-filter-search-response';
 import { PdpaPrivacyModel } from '../models/pdpa-privacy/pdpa-privacy';
 import { FormControl, FormGroup } from '@angular/forms';
-import { FeatchPdpaPrivacyListRequest } from '../models/pdpa-privacy/featch-pdpa-privacy-list/featch-pdpa-privacy-list-request';
+import { FetchPdpaPrivacyListRequest } from '../models/pdpa-privacy/fetch-pdpa-privacy-list/fetch-pdpa-privacy-list-request';
 import { FetchFilterSearchRequest } from '../models/common/fetch-filter-search-request';
-import { FetchPdpaPrivacyListModel } from '../models/pdpa-privacy/featch-pdpa-privacy-list/featch-pdpa-privacy-list-response';
+import { FetchPdpaPrivacyListModel } from '../models/pdpa-privacy/fetch-pdpa-privacy-list/fetch-pdpa-privacy-list-response';
 import { PageEvent } from '@angular/material/paginator';
 
 
@@ -71,7 +71,7 @@ export class PdpaPrivacyComponent implements OnInit {
       filterType: number,
       filterValue: string
     ) {
-      const request: FeatchPdpaPrivacyListRequest = {
+      const request: FetchPdpaPrivacyListRequest = {
         pageNumber: pageIndex + 1,
         pageSize: pageSize,
         filterType: filterType,

@@ -2,8 +2,8 @@ import { Injectable, NgModule } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { catchError, map, retry } from 'rxjs';
-import { FeatchPdpaPrivacyListRequest } from 'src/app/models/pdpa-privacy/featch-pdpa-privacy-list/featch-pdpa-privacy-list-request';
-import { FeatchPdpaPrivacyListResponse } from 'src/app/models/pdpa-privacy/featch-pdpa-privacy-list/featch-pdpa-privacy-list-response';
+import { FetchPdpaPrivacyListRequest } from 'src/app/models/pdpa-privacy/fetch-pdpa-privacy-list/fetch-pdpa-privacy-list-request';
+import { FetchPdpaPrivacyListResponse } from 'src/app/models/pdpa-privacy/fetch-pdpa-privacy-list/fetch-pdpa-privacy-list-response';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class PdpaPrivacyService {
 
   constructor(private http: HttpClient) { }
 
-  getAllPdpaPrivacy(request: FeatchPdpaPrivacyListRequest): Observable<FeatchPdpaPrivacyListResponse>{
+  getAllPdpaPrivacy(request: FetchPdpaPrivacyListRequest): Observable<FetchPdpaPrivacyListResponse>{
     const apiUrl = `${this.baseUrl}/pdpa-privacy-get`
     const requestBody = JSON.stringify(request);
     let headers = new HttpHeaders({
@@ -23,8 +23,7 @@ export class PdpaPrivacyService {
     });
 
     let options = { headers: headers };
-    console.log(options)
-    return this.http.post<FeatchPdpaPrivacyListResponse>(apiUrl, requestBody, options)
+    return this.http.post<FetchPdpaPrivacyListResponse>(apiUrl, requestBody, options)
       .pipe(
         map(response => {
           console.log(response)
