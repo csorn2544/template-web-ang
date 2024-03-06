@@ -39,6 +39,8 @@ import { ConfirmDiallogComponent } from './shared/confirm-diallog/confirm-diallo
 import { PdpaPrivacyComponent } from './pdpa-privacy/pdpa-privacy.component';
 import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
+import { PdpaPrivacyDetailComponent } from './pdpa-privacy-detail/pdpa-privacy-detail.component';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { PaginatorModule } from 'primeng/paginator';
     MainComponent,
     PdpaConsentComponent,
     PdpaPrivacyComponent,
+    PdpaPrivacyDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,7 +84,8 @@ import { PaginatorModule } from 'primeng/paginator';
     MatRadioModule,
     MatMenuModule,
     TableModule,
-    PaginatorModule
+    PaginatorModule,
+    RadioButtonModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

@@ -11,6 +11,9 @@ import { FeatchPdpaPrivacyListRequest } from '../models/pdpa-privacy/featch-pdpa
 import { FetchFilterSearchRequest } from '../models/common/fetch-filter-search-request';
 import { FetchPdpaPrivacyListModel } from '../models/pdpa-privacy/featch-pdpa-privacy-list/featch-pdpa-privacy-list-response';
 import { PageEvent } from '@angular/material/paginator';
+import { ConfirmDiallogComponent, ConfirmDialogResult, ConfirmDialogType } from '../shared/confirm-diallog/confirm-diallog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { PdpaPrivacyDeleteRequest } from '../models/pdpa-privacy/pdpa-privacy-delete/pdpa-privacy-delete-request';
 
 
 
@@ -60,7 +63,9 @@ export class PdpaPrivacyComponent implements OnInit {
 
     constructor(
       private router: Router,
-      private pdpaPrivacyService: PdpaPrivacyService    ) {}
+      private pdpaPrivacyService: PdpaPrivacyService,
+      private dialog: MatDialog,
+      ) {}
 
     ngOnInit() {
       this.fetchFilterSearch();
@@ -157,5 +162,37 @@ export class PdpaPrivacyComponent implements OnInit {
           ? this.modifiedFilterValue
           : this.pdpaPrivacyForm.controls.filterValue.value
       );
+    }
+
+    onEditRowClick(row: any) {
+      this.router.navigate(['pdpa-privacy', row.id , JSON.stringify(row)]);
+    }
+  
+    onDeleteRowClick(row: PdpaPrivacyModel) {
+      const dialogRef = this.dialog.open(ConfirmDiallogComponent, {
+        width: '400px'
+      });
+      dialogRef.componentInstance.confirmDialogType = ConfirmDialogType.delete;
+      dialogRef.componentInstance.title = "Delete PDPA-Privacy?";
+      dialogRef.componentInstance.description = "You will not be able to recover it.";
+      dialogRef.afterClosed().subscribe(result => {
+        if (result == ConfirmDialogResult.primaryButtonClick) {
+          const request: PdpaPrivacyDeleteRequest = {
+            id: row.id
+          }
+          this.pdpaPrivacyService.deletePdpaPrivacy(request).subscribe({
+            next: (response) => {
+              this.fetchPdpaPrivacyList(
+                this.pageIndex,
+                this.pageSize,
+                Number(this.selectedFilterOption),
+                ""
+              );
+            }, error: (error) => {
+              console.log(error);
+            }
+          });
+        }
+      });
     }
 }

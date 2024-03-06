@@ -90,7 +90,16 @@
       </td>
       <td style="text-align: center; font-size: 14px">
         {{ row.action }}
+        <div>
+          <a (click)="onEditRowClick(row)"><i class="fa-solid fa-pen-to-square pointer"
+                  style="color: var(--blue-blue-main);"></i></a>
+      </div>
+      <div>
+          <a (click)="onDeleteRowClick(row)"><i class="fa-regular fa-trash-can"
+                  style="color: var(--red);"></i></a>
+      </div>
       </td>
+      
     </tr>
   </ng-template>
 </p-table>
