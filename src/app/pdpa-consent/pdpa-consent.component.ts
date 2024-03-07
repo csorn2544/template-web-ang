@@ -19,6 +19,7 @@ import {
   ConfirmDialogType,
 } from '../shared/confirm-diallog/confirm-diallog.component';
 import { PageEvent } from '@angular/material/paginator';
+import { CommonService } from '../services/common/common.service';
 
 @Component({
   selector: 'app-pdpa-consent',
@@ -62,6 +63,7 @@ export class PdpaConsentComponent implements OnInit {
   constructor(
     private router: Router,
     private pdpaConsentService: PdpaConsentService,
+    private commonService: CommonService,
     private datePipe: DatePipe,
     private dialog: MatDialog
   ) {}
@@ -81,7 +83,6 @@ export class PdpaConsentComponent implements OnInit {
       filterType: filterType,
       filterValue: filterValue,
     };
-    console.log(request);
     this.pdpaConsentService.getAllPdpaConsent(request).subscribe({
       next: (response) => {
         this.pdpaConsentList = this.mapModelResponse(response.data);
@@ -95,13 +96,22 @@ export class PdpaConsentComponent implements OnInit {
     const request: FetchFilterSearchRequest = {
       typeGroup: 'pdpa-consent',
     };
-    this.selectedFilterOption = '0';
-    this.fetchPdpaConsentList(
-      this.pageIndex,
-      this.pageSize,
-      Number(this.selectedFilterOption),
-      ''
-    );
+    this.commonService.fetchFilterSearch(request).subscribe({
+      next: (response) => {
+        this.filterOptions = response.data;
+        this.selectedFilterOption = "0";
+        this.fetchPdpaConsentList(
+          this.pageIndex,
+          this.pageSize,
+          Number(this.selectedFilterOption),
+          ""
+        );
+        (response)
+      },
+      error: (error) => {
+        (error);
+      },
+    });
   }
 
   mapModelResponse(itemList: FetchPdpaConsentListModel[]): PdpaConsentModel[] {
@@ -146,6 +156,25 @@ export class PdpaConsentComponent implements OnInit {
     const filterValueControl = this.pdpaConsentForm.get('filterValue');
     return (
       this.datePipe.transform(filterValueControl.value, 'dd/MM/yyyy') || ''
+    );
+  }
+
+  onSearchButtonClick() {
+    var filterValue : any
+    this.pageIndex = 0;
+    if (this.typeEvent === "datepicker") {
+      this.modifiedFilterValue = this.modifyFilterValues();
+      filterValue =  this.modifiedFilterValue;
+      this.isModified = true;
+    } else {
+      filterValue = this.pdpaConsentForm.controls.filterValue.value
+      this.isModified = false;
+    }
+    this.fetchPdpaConsentList(
+      this.pageIndex,
+      this.pageSize,
+      Number(this.selectedFilterOption),
+      filterValue
     );
   }
 
@@ -205,7 +234,7 @@ export class PdpaConsentComponent implements OnInit {
     //           ""
     //         );
     //       }, error: (error) => {
-    //         console.log(error);
+    //         (error);
     //       }
     //     });
     //   }

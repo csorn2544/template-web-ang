@@ -54,10 +54,6 @@ td {
   margin-left: 8px;
 }
 
-.margin-left-16 {
-  margin-left: 16px;
-}
-
 .margin-top-8 {
   margin-top: 8px;
 }
@@ -118,40 +114,6 @@ td {
 .mat-secondary {
   background-color: white;
   color: grey;
-}
-
-/* snackbar */
-.snackbar-success {
-  background: rgb(75, 181, 67);
-  color: white;
-}
-
-.snackbar-success button {
-  background-color: rgb(75, 181, 67);
-  color: white;
-  border: none;
-}
-
-.snackbar-warning {
-  background: rgb(255, 167, 25);
-  color: white;
-}
-
-.snackbar-warning button {
-  background-color: rgb(255, 167, 25);
-  color: white;
-  border: none;
-}
-
-.snackbar-error {
-  background: rgb(226, 31, 31);
-  color: white;
-}
-
-.snackbar-error button {
-  background-color: rgb(226, 31, 31);
-  color: white;
-  border: none;
 }
 
 /* MARK: Button */
@@ -252,26 +214,13 @@ td {
   cursor: not-allowed;
 }
 
-/* MARK: Dropdown */
-.custom-dropdown .mat-form-field-outline-start,
-.custom-dropdown .mat-form-field-outline-end {
-  border-color: #ced4da;
-}
-
-.custom-dropdown .mat-form-field-appearance-outline .mat-form-field-outline {
-  color: #ced4da;
-}
-
-.custom-dropdown .mat-form-field-appearance-outline .mat-form-field-outline-thick {
-  border-width: 2px;
-}
-
-::ng-deep .custom-dropdown .mat-form-field-underline {
-  display: none;
-}
-
 input.mat-input-element {
   font-family: 'NotoSansThai', sans-serif;
+}
+
+.flexible-width {
+  flex: 1;
+  min-width: 0; 
 }
 
 .cdk-global-scrollblock{
@@ -294,7 +243,10 @@ input.mat-input-element {
   outline: none !important;
 }
 
+::ng-deep *,*:focus,*:hover{
+  outline:none !important;
+}
+
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
-
 

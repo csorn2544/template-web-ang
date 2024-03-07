@@ -4,6 +4,48 @@
   </div>
 </div>
 <mat-divider></mat-divider>
+<form [formGroup]="pdpaPrivacyForm">
+  <div class="row margin-top-16">
+    <div class="col-2">
+      <mat-form-field class="custom-dropdown" style="height: 40px;">
+        <mat-select class="input-text" formControlName="filterKey" [(value)]="selectedFilterOption"
+                    (ngModelChange)="onChangeFilterKey()">
+          <mat-option *ngFor="let option of filterOptions" [value]="option.typeValue">
+            {{ option.typeName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-3">
+      <ng-container *ngIf="typeEvent === 'textfiled' ">
+        <input mat-input class="input-text margin-left-16" formControlName="filterValue" placeholder="Search by key"
+               type="text">
+      </ng-container>
+
+      <ng-container *ngIf="typeEvent === 'datepicker'">
+        <div>
+            <mat-form-field  style="width: 100%;margin-bottom: -20px;">
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="datePicker" formControlName="filterValue">
+              <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker #datePicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </ng-container>
+  </div>
+
+    <div class="col-2 search-button">
+      <button mat-raised-button class="button-primary search-button" (click)="onSearchButtonClick()">
+        <span>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </span>
+      </button>
+    </div>
+  </div>
+</form>
+
 <div class="row margin-top-32">
   <div class="col-12">
     <p-table [value]="pdpaPrivacyList" [tableStyle]="{ 'min-width': '50rem' }">

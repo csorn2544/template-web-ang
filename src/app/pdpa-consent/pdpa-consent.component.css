@@ -1,3 +1,8 @@
 .header-cell {
-    border: 1px solid #ccc; /* Set your desired border properties */
-  }
+  border: 1px solid #ccc; /* Set your desired border properties */
+}
+
+.flexible-width {
+  flex: 1; /* This allows the select element to grow and shrink based on its content */
+  min-width: 0; /* Ensures that the select element can shrink even if it contains long content */
+}

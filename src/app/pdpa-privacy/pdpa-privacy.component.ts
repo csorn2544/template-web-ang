@@ -6,11 +6,12 @@ import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { FetchFilterSearchModel } from '../models/common/fetch-filter-search-response';
 import { PdpaPrivacyModel } from '../models/pdpa-privacy/pdpa-privacy';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FetchPdpaPrivacyListRequest } from '../models/pdpa-privacy/fetch-pdpa-privacy-list/fetch-pdpa-privacy-list-request';
 import { FetchFilterSearchRequest } from '../models/common/fetch-filter-search-request';
 import { FetchPdpaPrivacyListModel } from '../models/pdpa-privacy/fetch-pdpa-privacy-list/fetch-pdpa-privacy-list-response';
 import { PageEvent } from '@angular/material/paginator';
+import { CommonService } from '../services/common/common.service';
 
 
 
@@ -22,7 +23,7 @@ import { PageEvent } from '@angular/material/paginator';
 
 
 export class PdpaPrivacyComponent implements OnInit {
-  pageTitle: string = 'PDPA Privacy Policy Management';
+  pageTitle: string = 'PDPA Privacy  Management';
   isModified: boolean = false;
   selectedFilterOption: string;
   typeName: string;
@@ -60,7 +61,10 @@ export class PdpaPrivacyComponent implements OnInit {
 
     constructor(
       private router: Router,
-      private pdpaPrivacyService: PdpaPrivacyService    ) {}
+      private pdpaPrivacyService: PdpaPrivacyService,
+      private commonService: CommonService,
+      private datePipe: DatePipe,   
+      ) {}
 
     ngOnInit() {
       this.fetchFilterSearch();
@@ -92,13 +96,24 @@ export class PdpaPrivacyComponent implements OnInit {
     }
 
     fetchFilterSearch() {
-      this.selectedFilterOption = "0";
-      this.fetchPdpaPrivacyList(
-        this.pageIndex,
-        this.pageSize,
-        Number(this.selectedFilterOption),
-        ''
-      );
+      const request: FetchFilterSearchRequest = {
+        typeGroup: "pdpa-privacy",
+      };
+      this.commonService.fetchFilterSearch(request).subscribe({
+        next: (response) => {
+          this.filterOptions = response.data;
+          this.selectedFilterOption = "0";
+          this.fetchPdpaPrivacyList(
+            this.pageIndex,
+            this.pageSize,
+            Number(this.selectedFilterOption),
+            ""
+          );
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
     }
     
     mapModelResponse(itemList: FetchPdpaPrivacyListModel[]): PdpaPrivacyModel[] {
@@ -158,4 +173,51 @@ export class PdpaPrivacyComponent implements OnInit {
           : this.pdpaPrivacyForm.controls.filterValue.value
       );
     }
+
+    onSearchButtonClick() {
+      var filterValue : any
+      this.pageIndex = 0;
+      if (this.typeEvent === "datepicker") {
+        this.modifiedFilterValue = this.modifyFilterValues();
+        filterValue =  this.modifiedFilterValue;
+        this.isModified = true;
+      } else {
+        filterValue = this.pdpaPrivacyForm.controls.filterValue.value
+        this.isModified = false;
+      }
+        this.fetchPdpaPrivacyList(
+          this.pageIndex,
+          this.pageSize,
+          Number(this.selectedFilterOption),
+          filterValue
+        );
+    }
+  
+    modifyFilterValues(): any {
+      const filterValueControl = this.pdpaPrivacyForm.get("filterValue");
+      return this.datePipe.transform(filterValueControl.value, 'dd/MM/yyyy') || ''
+    }
+  
+    onChangeFilterKey() {
+      const selectingFilterOption = this.filterOptions.find(option => option.typeValue === this.selectedFilterOption);
+      this.typeName = selectingFilterOption.typeName;
+      this.typeEvent = selectingFilterOption.typeEvent;
+      console.log(this.typeEvent)
+      this.pdpaPrivacyForm.get('filterValue').setValue("");
+      if (this.typeName === "All") {
+        this.pdpaPrivacyForm.get('filterValue').clearValidators();
+        this.pdpaPrivacyForm.get('filterValue').disable();
+        this.fetchPdpaPrivacyList(
+          this.pageIndex,
+          this.pageSize,
+          Number(this.selectedFilterOption),
+          this.pdpaPrivacyForm.controls.filterValue.value
+        );
+      } else {
+        this.pdpaPrivacyForm.get('filterValue').enable();
+        this.pdpaPrivacyForm.get('filterValue').setValidators(Validators.required);
+      }
+        this.pdpaPrivacyForm.get('filterValue').updateValueAndValidity();
+    }
+  
 }

@@ -4,6 +4,59 @@
   </div>
 </div>
 <mat-divider></mat-divider>
+<form [formGroup]="pdpaConsentForm" (ngSubmit)="onSearchButtonClick()">
+  <div class="row margin-top-16">
+    <div class="col-2">
+      <select
+        class="input-text form-control"
+        formControlName="filterKey"
+        [(ngModel)]="selectedFilterOption"
+        (ngModelChange)="onChangeFilterKey()"
+      >
+        <option *ngFor="let option of filterOptions" [value]="option.typeValue">
+          {{ option.typeName }}
+        </option>
+      </select>
+    </div>
+    <div class="col-3">
+      <ng-container *ngIf="typeEvent === 'textfield'">
+        <input
+          class="input-text form-control margin-left-16"
+          formControlName="filterValue"
+          placeholder="Search by key"
+          type="text"
+        />
+      </ng-container>
+      <ng-container *ngIf="typeEvent === 'datepicker'">
+        <mat-form-field style="width: 100%; margin-bottom: -20px">
+          <mat-label>Choose a Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="datePicker"
+            formControlName="filterValue"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="datePicker"
+          ></mat-datepicker-toggle>
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker #datePicker></mat-datepicker>
+        </mat-form-field>
+        <mat-datepicker #datePicker></mat-datepicker>
+      </ng-container>
+    </div>
+    <div class="col-3 search-button">
+      <button
+        mat-raised-button
+        class="button-primary search-button"
+        type="submit"
+      >
+        <span><i class="fa-solid fa-magnifying-glass"></i> Search</span>
+      </button>
+    </div>
+  </div>
+</form>
+
 <div class="row margin-top-32">
   <div class="col-12">
     <p-table [value]="pdpaConsentList" [tableStyle]="{ 'min-width': '50rem' }">
