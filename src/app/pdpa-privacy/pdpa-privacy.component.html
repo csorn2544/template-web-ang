@@ -2,6 +2,14 @@
   <div class="col-10">
     <h2>{{ pageTitle }}</h2>
   </div>
+  <div class="col-2  d-flex justify-content-end">
+    <button mat-stroked-button class="button-primary" style="height: 44px;" (click)="onClickCreateButton()">
+      <span>
+        <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
+      </span>
+      Create PDPA Privacy
+    </button>
+  </div>
 </div>
 
 <form [formGroup]="pdpaPrivacyForm"></form>

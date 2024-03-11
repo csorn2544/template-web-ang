@@ -57,7 +57,7 @@ export class PdpaPrivacyDetailComponent {
   }
 
   ngOnInit(): void {
-    this.pdpaPrivacyForm.get('status');
+    this.setUp();
   };
   
 
@@ -84,6 +84,7 @@ export class PdpaPrivacyDetailComponent {
       });
     } else {
       this.pageState = PageState.edit
+      console.log(this.pageState)
       this.pageTitle = "Edit PDPA Privacy Policy"
       const rowData: FetchPdpaPrivacyListModel = JSON.parse(this.route.snapshot.params['rowData']);
       this.pdpaPrivacyForm = new FormGroup({
@@ -105,7 +106,7 @@ export class PdpaPrivacyDetailComponent {
       this.updateFormattedDescription('descriptionEn');
       this.updateFormattedDescription('descriptionZh');
     }
-
+    console.log(this.pdpaPrivacyForm.value);
   }
 
   createPdpaPrivacy() {
@@ -126,13 +127,13 @@ export class PdpaPrivacyDetailComponent {
       }
       this.pdpaPrivacyService.CreatePdpaPrivacy(request).subscribe({
         next: (response) => {
+          console.log('CreatePdpaPrivacy Response:', response);
           this.hideLoading();
           this.navigateBack();
         },
         error: (error) => {
           console.error('Error creating PDPA Privacy:', error);
           this.hideLoading();
-          // Handle error messages or display a notification to the user.
         },
       });
     }
@@ -154,9 +155,9 @@ export class PdpaPrivacyDetailComponent {
         descriptionZh: this.pdpaPrivacyForm.value.descriptionZh ?? '',
         lastModifierUserId: 0
       };
-  
       this.pdpaPrivacyService.updatePdpaPrivacy(request).subscribe({
         next: (response) => {
+          console.log('UpdatePdpaPrivacy Response:', response);
           this.hideLoading();
           this.navigateBack();
         },
@@ -223,6 +224,7 @@ export class PdpaPrivacyDetailComponent {
       }, this.delayButton);
     }
   }
+
   navigateBack() {
     setTimeout(() => {
       this.location.back();

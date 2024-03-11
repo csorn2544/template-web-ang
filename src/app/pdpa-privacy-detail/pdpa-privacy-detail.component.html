@@ -1,9 +1,15 @@
 <div class="row">
-    <div class="col-6 d-flex align-items-center">
-      <button pButton type="button" icon="pi pi-chevron-left" class="p-button p-button-icon" (click)="onNavigateBackClick()" label="Back" style="color: #000000;"></button>
-      <h2>{{ pageTitle }}</h2>
-    </div>
+  <div class="col-6 d-flex align-items-center">
+    <button mat-icon-button class="navigate-back-button" color="primary" (click)="onNavigateBackClick()">
+      <span>
+        <i class="fa-solid fa-chevron-left fa-lg" style="color: #000000;"></i>
+      </span>
+    </button>
+
+    <h2>{{ pageTitle }}</h2>
   </div>
+</div>
+<mat-divider></mat-divider>
   
   <div class="page-content">
     <div style="padding-left: 16px; padding-right: 16px;">
@@ -16,50 +22,77 @@
                   <h4 style="margin-bottom: 10px;">PDPA Details<span style="color: red;">*</span></h4>
                 </div>
                 <div class="col-4">
+                  <div class="col-10">
                   <div class="p-inputgroup">
                     <span class="p-inputgroup-addon">PP ID</span>
                     <input pInputText formControlName="ppCode">
                   </div>
-                </div>
+                  </div>
+                  </div>
                 <div class="col-4">
+                  <div class="col-10">
                   <div class="p-inputgroup">
                     <span class="p-inputgroup-addon">Version</span>
                     <input pInputText formControlName="version">
                   </div>
                 </div>
-                <div class="col-12">
-                    <div class="flex flex-wrap gap-3">
-                      <div class="flex align-items-center">
-                        <input type="radio" name="status" value="1" formControlName="status" id="status1">
-                        <label for="status1" class="ml-2">Active</label>
-                      </div>
-                  
-                      <div class="flex align-items-center">
-                        <input type="radio" name="status" value="0" formControlName="status" id="status2">
-                        <label for="status2" class="ml-2">Inactive</label>
-                      </div>
-                    </div>
-                  </div>                              
+                </div>
                 <div class="col-4">
+                  <div class="col-4">
+                      <span class="p-inputgroup-addon">Status</span>
+                  </div>
+                  <br>
+                  <div class="col-12">
+                    <div class="col-12">
+                      <div class="row align-items-center">
+                        <div>
+                          <input type="radio" name="status" [value]=1 formControlName="status" id="status1">
+                          <label for="status1" class="ml-2 mr-2">Active</label>
+                        </div>
+                        <div>
+                          <input type="radio" name="status" [value]=0 formControlName="status" id="status2">
+                          <label for="status2" class="ml-2">Inactive</label>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              
+
+                <div class="col-4">
+                  <div class="col-10">
                   <div class="p-inputgroup">
                     <span class="p-inputgroup-addon">Title(TH)</span>
                     <input pInputText formControlName="titleTh">
                   </div>
                 </div>
+                </div>
                 <div class="col-4">
+                  <div class="col-10">
                   <div class="p-inputgroup">
                     <span class="p-inputgroup-addon">Title(EN)</span>
                     <input pInputText formControlName="titleEn">
                   </div>
                 </div>
+                </div>
                 <div class="col-4">
+                  <div class="col-10">
                   <div class="p-inputgroup">
                     <span class="p-inputgroup-addon">Title(ZH)</span>
                     <input pInputText formControlName="titleZh">
                   </div>
+                  </div>
                 </div>
+
+
                 <div class="col-4">
-                  <div class="font-style-container" aria-label="Font Style">
+                  <br>
+                  <div class="col-10">
+                    <span class="p-inputgroup-addon">Description Box(TH)</span>
+                  </div>
+                  <br>
+                  <div class="col-10">
+                  <div class="font-style-container" aria-label="Font Style" >
                     <button type="button" class="styled-button" (click)="applyTag('p', 'descriptionTh')">Paragraph</button>
                         <button type="button" class="styled-button" (click)="applyTag('strong', 'descriptionTh')">Strong</button>
                         <button type="button" class="styled-button" (click)="applyTag('b', 'descriptionTh')">Bold</button>
@@ -67,15 +100,22 @@
                         <button type="button" class="styled-button" (click)="applyTag('u', 'descriptionTh')">Underline</button>
                   </div>
                   <div class="p-inputgroup">
-                    <span class="p-inputgroup-addon">Description Box(TH)</span>
-                    <textarea pInputTextarea placeholder="Textarea" rows="5" formControlName="descriptionTh"
+                    <textarea pInputTextarea placeholder="Textarea" rows="5" formControlName="descriptionTh" style="width: 80%;"
                       (input)="updateFormattedDescription('descriptionTh')"></textarea>
                   </div>
+                  <br>
                   <div class="p-card">
                     <div [innerHTML]="formattedDescriptionTh"></div>
                   </div>
                 </div>
+                </div>
                 <div class="col-4">
+                  <br>
+                  <div class="col-10">
+                  <span class="p-inputgroup-addon">Description Box(EN)</span>
+                </div>
+                <br>
+                <div class="col-10">
                     <div class="font-style-container" aria-label="Font Style">
                       <button type="button" class="styled-button" (click)="applyTag('p', 'descriptionEn')">Paragraph</button>
                           <button type="button" class="styled-button" (click)="applyTag('strong', 'descriptionEn')">Strong</button>
@@ -84,15 +124,23 @@
                           <button type="button" class="styled-button" (click)="applyTag('u', 'descriptionEn')">Underline</button>
                     </div>
                     <div class="p-inputgroup">
-                      <span class="p-inputgroup-addon">Description Box(EN)</span>
-                      <textarea pInputTextarea placeholder="Textarea" rows="5" formControlName="descriptionEn"
+                      <textarea pInputTextarea placeholder="Textarea" rows="5" formControlName="descriptionEn" style="width: 80%;"
                         (input)="updateFormattedDescription('descriptionEn')"></textarea>
                     </div>
+                    <br>
                     <div class="p-card">
                       <div [innerHTML]="formattedDescriptionEn"></div>
                     </div>
                   </div>
+                  </div>
+
                   <div class="col-4">
+                    <br>
+                    <div class="col-10">
+                      <span class="p-inputgroup-addon">Description Box(ZH)</span>
+                    </div>
+                    <br>
+                    <div class="col-10">
                     <div class="font-style-container" aria-label="Font Style">
                       <button type="button" class="styled-button" (click)="applyTag('p', 'descriptionZh')">Paragraph</button>
                           <button type="button" class="styled-button" (click)="applyTag('strong', 'descriptionZh')">Strong</button>
@@ -101,14 +149,16 @@
                           <button type="button" class="styled-button" (click)="applyTag('u', 'descriptionZh')">Underline</button>
                     </div>
                     <div class="p-inputgroup">
-                      <span class="p-inputgroup-addon">Description Box(ZH)</span>
-                      <textarea pInputTextarea placeholder="Textarea" rows="5" formControlName="descriptionZh"
+                      <textarea pInputTextarea placeholder="Textarea" rows="5" formControlName="descriptionZh" style="width: 80%;"
                         (input)="updateFormattedDescription('descriptionZh')"></textarea>
                     </div>
+                    <br>
                     <div class="p-card">
                       <div [innerHTML]="formattedDescriptionZh"></div>
                     </div>
                   </div>
+                </div>
+                
               </div>
             </div>
 
