@@ -41,6 +41,7 @@ import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
 import { PdpaPrivacyDetailComponent } from './pdpa-privacy-detail/pdpa-privacy-detail.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { PdpaConsentDetailComponent } from './pdpa-consent-detail/pdpa-consent-detail.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     PdpaConsentComponent,
     PdpaPrivacyComponent,
     PdpaPrivacyDetailComponent,
+    PdpaConsentDetailComponent,
   ],
   imports: [
     BrowserModule,

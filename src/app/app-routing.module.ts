@@ -4,6 +4,7 @@ import { PdpaConsentComponent } from './pdpa-consent/pdpa-consent.component';
 import { MainComponent } from './shared/main/main.component';
 import { PdpaPrivacyComponent } from './pdpa-privacy/pdpa-privacy.component';
 import { PdpaPrivacyDetailComponent } from './pdpa-privacy-detail/pdpa-privacy-detail.component';
+import { PdpaConsentDetailComponent } from './pdpa-consent-detail/pdpa-consent-detail.component';
 
 const routes: Routes = [
   {
@@ -17,11 +18,14 @@ const routes: Routes = [
       path: 'pdpa-privacy-policy', component: PdpaPrivacyComponent
     },
     {
-      path: 'pdpa-privacy/:state',
-      component: PdpaPrivacyDetailComponent
+      path: 'pdpa-privacy/:state',component: PdpaPrivacyDetailComponent
     }, {
-      component: PdpaPrivacyDetailComponent,
-      path: 'pdpa-privacy/:state/:rowData'
+      path: 'pdpa-privacy/:state/:rowData',component: PdpaPrivacyDetailComponent
+    },
+    {
+      path: 'pdpa-consent/:state',component: PdpaConsentDetailComponent
+    }, {
+      path: 'pdpa-consent/:state/:rowData',component: PdpaConsentDetailComponent
     },
     ]
   }
