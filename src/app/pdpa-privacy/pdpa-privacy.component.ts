@@ -12,6 +12,9 @@ import { FetchFilterSearchRequest } from '../models/common/fetch-filter-search-r
 import { FetchPdpaPrivacyListModel } from '../models/pdpa-privacy/fetch-pdpa-privacy-list/fetch-pdpa-privacy-list-response';
 import { PageEvent } from '@angular/material/paginator';
 import { CommonService } from '../services/common/common.service';
+import { ConfirmDiallogComponent, ConfirmDialogResult, ConfirmDialogType } from '../shared/confirm-diallog/confirm-diallog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { PdpaPrivacyDeleteRequest } from '../models/pdpa-privacy/pdpa-privacy-delete/pdpa-privacy-delete-request';
 
 
 
@@ -64,6 +67,7 @@ export class PdpaPrivacyComponent implements OnInit {
       private pdpaPrivacyService: PdpaPrivacyService,
       private commonService: CommonService,
       private datePipe: DatePipe,   
+      private dialog: MatDialog,
       ) {}
 
     ngOnInit() {
@@ -220,4 +224,35 @@ export class PdpaPrivacyComponent implements OnInit {
         this.pdpaPrivacyForm.get('filterValue').updateValueAndValidity();
     }
   
+    onEditRowClick(row: any) {
+      this.router.navigate(['pdpa-privacy', row.id , JSON.stringify(row)]);
+    }
+  
+    onDeleteRowClick(row: PdpaPrivacyModel) {
+      const dialogRef = this.dialog.open(ConfirmDiallogComponent, {
+        width: '400px'
+      });
+      dialogRef.componentInstance.confirmDialogType = ConfirmDialogType.delete;
+      dialogRef.componentInstance.title = "Delete PDPA-Privacy?";
+      dialogRef.componentInstance.description = "You will not be able to recover it.";
+      dialogRef.afterClosed().subscribe(result => {
+        if (result == ConfirmDialogResult.primaryButtonClick) {
+          const request: PdpaPrivacyDeleteRequest = {
+            id: row.id
+          }
+          this.pdpaPrivacyService.deletePdpaPrivacy(request).subscribe({
+            next: (response) => {
+              this.fetchPdpaPrivacyList(
+                this.pageIndex,
+                this.pageSize,
+                Number(this.selectedFilterOption),
+                ""
+              );
+            }, error: (error) => {
+              console.log(error);
+            }
+          });
+        }
+      });
+    }
 }
