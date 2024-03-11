@@ -17,7 +17,7 @@ styleUrls: ['./pdpa-consent-detail.component.css']
 })
 export class PdpaConsentDetailComponent {
   isLoading: boolean = false;
-  pageTitle: string = "Edit PDPA Consent";
+  pageTitle: string;
   pageState: PageState = PageState.new;
   isSubmitButtonEnable: boolean = true;
   delayButton: number = 2000;
@@ -66,11 +66,11 @@ export class PdpaConsentDetailComponent {
     if (stateParam == 'new') {
       this.pageState = PageState.new
       this.submitTitle = "Submit"
-
+      this.pageTitle = "Create PDPA Consent"
       this.pdpaConsentForm = new FormGroup({
         id : new FormControl({ value: 0, disabled: true }, Validators.required),
         conCode: new FormControl({ value: '', disabled: false }, Validators.required),
-        status: new FormControl({ value: 1, disabled: false }, Validators.required),
+        status: new FormControl({ value: 1, disabled: true }),
         version: new FormControl({ value: '', disabled: false }, Validators.required),
         titleTh: new FormControl({ value: '', disabled: false }, Validators.required),
         titleEn: new FormControl({ value: '', disabled: false }, Validators.required),
@@ -84,7 +84,6 @@ export class PdpaConsentDetailComponent {
       });
     } else {
       this.pageState = PageState.edit
-      console.log(this.pageState)
       this.pageTitle = "Edit PDPA Consent"
       const rowData: FetchPdpaConsentListModel = JSON.parse(this.route.snapshot.params['rowData']);
       this.pdpaConsentForm = new FormGroup({
@@ -106,7 +105,6 @@ export class PdpaConsentDetailComponent {
       this.updateFormattedDescription('descriptionEn');
       this.updateFormattedDescription('descriptionZh');
     }
-    console.log(this.pdpaConsentForm.value);
   }
 
   createPdpaConsent() {
@@ -145,7 +143,7 @@ export class PdpaConsentDetailComponent {
       const request: PdpaConsentUpdateRequest = {
         id: rowData.id,
         conCode: rowData.conCode,
-        status: rowData.status,
+        status: this.pdpaConsentForm.value.status ?? 1,
         version: this.pdpaConsentForm.value.version ?? '',
         titleTh: this.pdpaConsentForm.value.titleTh ?? '',
         titleEn: this.pdpaConsentForm.value.titleEn ?? '',
@@ -155,6 +153,8 @@ export class PdpaConsentDetailComponent {
         descriptionZh: this.pdpaConsentForm.value.descriptionZh ?? '',
         lastModifierUserId: 0
       };
+      console.log(request)
+
       this.pdpaConsentService.updatePdpaConsent(request).subscribe({
         next: (response) => {
           console.log('UpdatePdpaConsent Response:', response);
@@ -248,7 +248,6 @@ export class PdpaConsentDetailComponent {
   onNavigateBackClick() {
     this.location.back();
   }
-
 
 }
 

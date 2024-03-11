@@ -3,7 +3,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { ActivatedRoute,Router} from '@angular/router';
 import { Location } from '@angular/common';
 import { PdpaPrivacyService } from '../services/pdpa-privacy/pdpa-privacy.service';
-import { FetchPdpaPrivacyListModel } from '../models/pdpa-privacy/featch-pdpa-privacy-list/featch-pdpa-privacy-list-response';
+import { FetchPdpaPrivacyListModel } from '../models/pdpa-privacy/fetch-pdpa-privacy-list/fetch-pdpa-privacy-list-response'; 
 import { FormControl, FormGroup, Validators,FormBuilder } from '@angular/forms';
 import { PdpaPrivacyUpdateRequest } from '../models/pdpa-privacy/pdpa-privacy-update/pdpa-privacy-update-request';
 import { PdpaPrivacyCreateRequest } from '../models/pdpa-privacy/pdpa-privacy-create/pdpa-privacy-create-request';
@@ -17,7 +17,7 @@ import { PdpaPrivacyCreateRequest } from '../models/pdpa-privacy/pdpa-privacy-cr
 })
 export class PdpaPrivacyDetailComponent {
   isLoading: boolean = false;
-  pageTitle: string = "Edit PDPA Privacy Policy";
+  pageTitle: string;
   pageState: PageState = PageState.new;
   isSubmitButtonEnable: boolean = true;
   delayButton: number = 2000;
@@ -30,7 +30,7 @@ export class PdpaPrivacyDetailComponent {
   pdpaPrivacyForm = new FormGroup({
     id : new FormControl({ value: 0,  disabled: false  }, Validators.required),
     ppCode: new FormControl({ value: '',  disabled: false  }, Validators.required),
-    status: new FormControl({ value: 1,  disabled: false  }, Validators.required),
+    status: new FormControl({ value: 1,  disabled: true  }, Validators.required),
     version: new FormControl({ value: '',  disabled: false  }, Validators.required),
     titleTh: new FormControl({ value: '',  disabled: false  }, Validators.required),
     titleEn: new FormControl({ value: '',  disabled: false  }, Validators.required),
@@ -65,12 +65,13 @@ export class PdpaPrivacyDetailComponent {
     const stateParam = this.route.snapshot.params['state'];
     if (stateParam == 'new') {
       this.pageState = PageState.new
+      this.pageTitle = "Create PDPA Privacy Policy"
       this.submitTitle = "Submit"
 
       this.pdpaPrivacyForm = new FormGroup({
         id : new FormControl({ value: 0, disabled: true }, Validators.required),
         ppCode: new FormControl({ value: '', disabled: false }, Validators.required),
-        status: new FormControl({ value: 1, disabled: false }, Validators.required),
+        status: new FormControl({ value: 1, disabled: true }, Validators.required),
         version: new FormControl({ value: '', disabled: false }, Validators.required),
         titleTh: new FormControl({ value: '', disabled: false }, Validators.required),
         titleEn: new FormControl({ value: '', disabled: false }, Validators.required),
@@ -84,7 +85,6 @@ export class PdpaPrivacyDetailComponent {
       });
     } else {
       this.pageState = PageState.edit
-      console.log(this.pageState)
       this.pageTitle = "Edit PDPA Privacy Policy"
       const rowData: FetchPdpaPrivacyListModel = JSON.parse(this.route.snapshot.params['rowData']);
       this.pdpaPrivacyForm = new FormGroup({
@@ -101,7 +101,7 @@ export class PdpaPrivacyDetailComponent {
         creatorUserId: new FormControl({ value: rowData.creatorUserId, disabled: false }),
         lastModifierUserId: new FormControl({ value: rowData.lastModifierUserId, disabled: false }),
         isDeleted: new FormControl({ value: rowData.isDeleted, disabled: false }, Validators.required)
-      });
+      })
       this.updateFormattedDescription('descriptionTh');
       this.updateFormattedDescription('descriptionEn');
       this.updateFormattedDescription('descriptionZh');
@@ -145,7 +145,7 @@ export class PdpaPrivacyDetailComponent {
       const request: PdpaPrivacyUpdateRequest = {
         id: rowData.id,
         ppCode: rowData.ppCode,
-        status: rowData.status,
+        status: this.pdpaPrivacyForm.value.status ?? 1,
         version: this.pdpaPrivacyForm.value.version ?? '',
         titleTh: this.pdpaPrivacyForm.value.titleTh ?? '',
         titleEn: this.pdpaPrivacyForm.value.titleEn ?? '',

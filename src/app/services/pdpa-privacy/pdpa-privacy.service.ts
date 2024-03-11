@@ -2,16 +2,14 @@ import { Injectable, NgModule } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { catchError, map, retry } from 'rxjs';
-import { FeatchPdpaPrivacyListRequest } from 'src/app/models/pdpa-privacy/featch-pdpa-privacy-list/featch-pdpa-privacy-list-request';
-import { FeatchPdpaPrivacyListResponse } from 'src/app/models/pdpa-privacy/featch-pdpa-privacy-list/featch-pdpa-privacy-list-response';
-import { PdpaPrivacyDeleteRequest } from 'src/app/models/pdpa-privacy/pdpa-privacy-delete/pdpa-privacy-delete-request';
-import { PdpaPrivacyDeleteResponse } from 'src/app/models/pdpa-privacy/pdpa-privacy-delete/pdpa-privacy-delete-response';
-import { PdpaPrivacyUpdateRequest } from 'src/app/models/pdpa-privacy/pdpa-privacy-update/pdpa-privacy-update-request';
-import { PdpaPrivacyUpdateResponse } from 'src/app/models/pdpa-privacy/pdpa-privacy-update/pdpa-privacy-update-response';
-import { PdpaPrivacyCreateResponse } from 'src/app/models/pdpa-privacy/pdpa-privacy-create/pdpa-privacy-create-response';
-import { PdpaPrivacyCreateRequest } from 'src/app/models/pdpa-privacy/pdpa-privacy-create/pdpa-privacy-create-request';
-import { FetchPdpaPrivacyListRequest } from 'src/app/models/pdpa-privacy/fetch-pdpa-privacy-list/fetch-pdpa-privacy-list-request';
-import { FetchPdpaPrivacyListResponse } from 'src/app/models/pdpa-privacy/fetch-pdpa-privacy-list/fetch-pdpa-privacy-list-response';
+import { FetchPdpaPrivacyListRequest } from '../../models/pdpa-privacy/fetch-pdpa-privacy-list/fetch-pdpa-privacy-list-request';
+import { FetchPdpaPrivacyListResponse } from '../../models/pdpa-privacy/fetch-pdpa-privacy-list/fetch-pdpa-privacy-list-response';
+import { PdpaPrivacyCreateRequest } from '../../models/pdpa-privacy/pdpa-privacy-create/pdpa-privacy-create-request';
+import { PdpaPrivacyCreateResponse } from '../../models/pdpa-privacy/pdpa-privacy-create/pdpa-privacy-create-response';
+import { PdpaPrivacyUpdateRequest } from '../../models/pdpa-privacy/pdpa-privacy-update/pdpa-privacy-update-request';
+import { PdpaPrivacyUpdateResponse } from '../../models/pdpa-privacy/pdpa-privacy-update/pdpa-privacy-update-response';
+import { PdpaPrivacyDeleteRequest } from '../../models/pdpa-privacy/pdpa-privacy-delete/pdpa-privacy-delete-request';
+import { PdpaPrivacyDeleteResponse } from '../../models/pdpa-privacy/pdpa-privacy-delete/pdpa-privacy-delete-response';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +42,7 @@ export class PdpaPrivacyService {
       );
   }
 
-  CreatePdpaPrivacy(request: PdpaPrivacyCreateRequest): Observable<PdpaPrivacyCreateResponse>  {
+  CreatePdpaPrivacy(request: PdpaPrivacyCreateRequest): Observable<PdpaPrivacyCreateRequest>  {
     const apiUrl = `${this.baseUrl}/pdpa-privacy-create`;
       const requestBody = JSON.stringify(request);
       let headers = new HttpHeaders({
